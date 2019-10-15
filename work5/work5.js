@@ -26,7 +26,7 @@ str ='<table border="1">'
 for(var i = 9;i>0;i--){
     str += '<tr>'
     for(var j=i;j>0;j-- ){
-        str+='<td>'+ i +'+'+j+'='+ i*j +'</td>'
+        str+='<td>'+ i +'*'+j+'='+ i*j +'</td>'
     }
     str +='</tr>'
 }
