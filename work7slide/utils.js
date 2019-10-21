@@ -23,25 +23,26 @@ function bubbleSort(str) {
      } = logValues.next()
      for(const key in row){
          let color = pos.indexOf(Number(key)) >-1?'color:red;':''
-         str+='<span style"font-size:'+ row[key]*20 +'px;' +
+         str+='<span style="font-size:'+ row[key]*20 +'px;' +
          color + '">' + row[key] +'</span>'
         }
+        console.log(str)
         showElement.innerHTML = str
         if(pos[0] != -1)
-        setTimeout("showLog(logValues,showDiv))", 500)
+        setTimeout("showLog(logValues,showDiv)", 500)
   }
 
-function inserSort(str) {  
+function insertSort(str) {  
     let arr = str.split(',')
     let sortLog = []
     for(let i = 1; i<arr.length; i++){
-        for(let j = 1 ;j >0;j--){
-            sortLog.push([arr.concat(), [j-1, j ]])
-            sortLog.push([arr.concat(), [j-1, j ]])
-            sortLog.push([arr.concat(), [j-1, j ]])
+        for(let j = i ;j >0;j--){
+            sortLog.push([arr.concat(), [j-1, j]])
+            sortLog.push([arr.concat(), [j-1, j]])
+            sortLog.push([arr.concat(), [j-1, j]])
             if(arr[j-1]>arr[j]){
                 [arr[j-1],arr[j]] = [arr[j], arr[j-1]]
-                sortLog.push([arr.concat(),[j,j-1]])
+                sortLog.push([arr.concat(),[j-1,j]])
             }
         }
     }
