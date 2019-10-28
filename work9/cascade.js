@@ -99,7 +99,7 @@ majorSelect.onchange = function () {
 collegeSelect.onchange = function () {
     majorSelect.options.length = 0;
     creatOption(majorSelect,majors[collegeSelect.value]);
-    if(creatOption.value >=0){
+    if(collegeSelect.value >=0){
         majorSelect.onchange();
     }else{
         classSelect.options.length = 0;
