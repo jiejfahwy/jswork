@@ -27,4 +27,5 @@ function stat(){
     let arr = str.split('').sort()
     obj = arr.reduce((a, c) => { a[c]? a[c]++: a[c]=1; return a}, {})
     document.getElementById('result').innerHTML = JSON.stringify(obj)
+    
 }
