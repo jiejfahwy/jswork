@@ -18,6 +18,52 @@
         <p><input type="button" value="统计" onclick="stat()"></p>
         <div id="result"></div>
     </div>
+    <script>
+        var a = "qeqeqwrqwew"
+        // console.log(a.reduce(function(accumulator,currentValue){
+        //     return sourceObj
+        // }))
+        // var obj = a.split("").sort().reduce(
+        //     (a,c) => (a[c]++ ||(a[c]=1),a)
+        // ,{})
+        // console.log(obj)
+
+            var b =a.split("") 
+            console.log(b)
+            var obj = b.reduce(function(a,c){
+                // 
+                if(a[c]){
+                    a[c]++
+                }else{
+                    a[c] = 1
+                }
+                return a 
+            },{})
+            console.log(obj)
+            /*
+                1-- a ={} c='a'  if(a[c])==> a={} a.e  else=> a.e=1 =>a={ e:1}
+                                  a{}  a.e                      a   
+                                  
+            1-- a={}   a={e:1}
+            2-- a={e:1}  a={e:2}
+            3-- a={e:2}  if(a[q]) else a[q]=1  a = {e:2,q:1}
+            4-- a={e:2,q:1} a = {e:2,q:2}
+            ......
+            
+            return a
+
+
+            */
+
+            var x = {
+                hwy2:123123
+            }
+            x.a = 1 
+            x.b = 1
+            x.hwy = 1
+            console.log(x)
+
+</script>
 </body>
 <script src="index.js"></script>
 </html>
