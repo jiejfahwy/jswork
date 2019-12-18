@@ -3,19 +3,21 @@ for(var i =0; i<inputs.length - 1; ++i){
     inputs[i].onblur = inputBlur;
 }
 function inputBlur(){
-    var name = this.name;
-    var val= this.value;
-    var tips = this.placeholder;
-    var tips_obj = this.parentNode.nextElementSibling;
+    var name = this.name;                                  
+    var val= this.value;                                
+    var tips = this.placeholder;                           
+    var tips_obj = this.parentNode.nextElementSibling;             
     val = val.trim();
     if(!val){
         error(tips_obj, '输入框不能为空');
         return false;
     }
     var reg_msg = getRegMsg(name, tips);
+ 
     if(reg_msg['reg'].test(val)){
+        
         success(tips_obj, reg_msg['msg']['success']);
-    }else{
+    }else{    
         error(tips_obj, reg_msg['msg']['error']);
     }
 }
