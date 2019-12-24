@@ -1,28 +1,35 @@
+//获取所有input框
 var inputs = document.getElementsByTagName('input')
 for (var i = 0; i < inputs.length - 1; ++i) {
     inputs[i].onblur = inputBlur
 }
 function inputBlur() {
-    var name = this.name
-    var val = this.value
-    var tips = this.placeholder
-    var tips_obj = this.parentNode.nextElementSibling
+    var name = this.name                                         //获取输入框的name值
+    var val = this.value                                  //获取输入框的value值
+    var tips = this.placeholder                           //获取输入框中的提示信息
+    var tips_obj = this.parentNode.nextElementSibling        //获取提示信息显示的div元素对象
     console.log(tips_obj)
+    //1.去掉两端的空白字符
     val = val.trim()
+    //2.文本框内容为空，给出提示信息
     if (!val) {
         error(tips_obj, '输入框不能为空')
         return false
     }
+    //3.获取正则匹配规则和提示信息
     var reg_msg = getRegMsg(name, tips)
+       //4.检测是否和正则匹配
     if (reg_msg['reg'].test(val)) {
+        // 匹配成功，显示成功的提示信息
         success(tips_obj, reg_msg['msg']['success'])
     } else {
+        // 匹配失败，显示失败的提示信息
         error(tips_obj, reg_msg['msg']['error'])
     }
 }
 function getRegMsg(name, tips) {
     var reg = msg = ''
-    //zxd
+    // 根据input的name值，设置正则规则及提示信息
     switch (name) {
         case 'username':
             reg = /^[a-zA-Z]{4,12}$/
@@ -48,10 +55,12 @@ function getRegMsg(name, tips) {
     }
     return {'reg': reg, 'msg': msg}
 }
+//成功
 function success(obj, msg) {
     obj.className = 'success'
     obj.innerHTML = msg
 }
+//失败  
 function error(obj, msg) {
     obj.className = 'error'
     obj.innerHTML = msg + '，请重新输入'
